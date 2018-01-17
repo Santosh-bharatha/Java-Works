@@ -1,11 +1,14 @@
 package com.preferences;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 public class PreferenceExample {
 	
-	public static void main(String args[]) throws BackingStoreException{
+	public static void main(String args[]) throws BackingStoreException, IOException{
 		
 		Preferences prefRoot = Preferences.userRoot();
 		Preferences myPrefs = prefRoot.node("PreferenceExample");
@@ -14,6 +17,12 @@ public class PreferenceExample {
 		myPrefs.put("B","b");
 		myPrefs.put("C","c");
 		myPrefs.put("D","d");
+		
+		FileOutputStream fos = new FileOutputStream("/WORK/Camel/prefs.xml");
+		
+		myPrefs.exportSubtree(fos);
+		fos.close();
+			
 		
 		System.out.println("Node's absolute path: " + myPrefs.absolutePath());
 		

@@ -54,6 +54,35 @@ public class PreferenceTest {
 	    float f = myPrefs.getFloat(PREF_NAME, 12.3F); // float
 	    double d = myPrefs.getDouble(PREF_NAME, 12.3); // double
 	    bytes = myPrefs.getByteArray(PREF_NAME, bytes); // byte[]
+	    
+	    int keyMax = Preferences.MAX_KEY_LENGTH;
+	    
+	    int valueMax = Preferences.MAX_VALUE_LENGTH;
+	    
+	    int byteMax = Preferences.MAX_VALUE_LENGTH * 3 / 4;
+	    
+	    System.out.println("################");
+	    
+	    System.out.println("KeyMax : "+keyMax);
+	    System.out.println("valueMax : "+valueMax);
+	    System.out.println("byteMax : "+byteMax);
+	    
+
+	    
+	   Preferences prefs = Preferences.systemRoot();
+	   
+	   prefs = Preferences.userRoot();
+	   
+	   String name= prefs.name();
+	   
+	   Preferences parent = prefs.parent();
+	   
+	   String path = prefs.absolutePath();
+	   
+	   System.out.println("Parent :"+ parent);
+	   System.out.println("Absolute Path "+ path);
+	   
+	
 	}
 
 }
